@@ -1,0 +1,41 @@
+#Part of ATMO-MoRe ATM Supply Optimizer, a system that optimizes ATM resupply planning.
+#Copyright (C) 2024  Evangelos Psomakelis
+#
+#This program is free software: you can redistribute it and/or modify
+#it under the terms of the GNU Affero General Public License as published by
+#the Free Software Foundation, either version 3 of the License, or
+#any later version.
+#
+#This program is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+#GNU Affero General Public License for more details.
+#
+#You should have received a copy of the GNU Affero General Public License
+#along with this program.  If not, see <https://www.gnu.org/licenses/>.
+version: '3.9'
+
+services:
+  atmo-mongo:
+    restart: always
+    image: mongo:6-jammy
+    container_name: atmo-mongo
+    env_file:
+      - .env
+    ports:
+      - '50019:27017'
+    volumes:
+      - mongo_data:/data/db
+  atmo-python:
+    restart: always
+    container_name: atmo-python
+    build: .
+    volumes:
+      - .:/atmomore
+      - ./datastore:/atmomore/datastore
+    env_file:
+      - .env
+    working_dir: /atmomore
+    command: "sleep infinity"
+volumes:
+  mongo_data:

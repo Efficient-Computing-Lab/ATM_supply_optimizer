@@ -1,0 +1,15 @@
+pandas
+pymongo
+xlrd
+openpyxl
+keras-tcn
+matplotlib
+scipy
+scikit-learn
+holidays
+arch
+geopy
+gmplot
+networkx
+utm
+pulp
