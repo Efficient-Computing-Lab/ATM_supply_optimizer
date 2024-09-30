@@ -49,7 +49,8 @@ If Docker is not available or not preferred Pipenv can also be used. The instruc
 
 The following commands are available:
 * python main.py import_data : imports the data from the datastore files and add them to the MongoDB as defined in .env file.
-* python main.py apply_models --data=”path/to/input/data” : run the prediction models on the provided dataset, defined using the --data argument, and print a list of ATMs that will need supply tommorow.
+* python main.py create_plans --datafile=”path/to/input/data” --model=ilp : run the prediction model, defined with the --model parameter, on the provided dataset, defined using the --data argument, and print a list of ATMs that will need supply tommorow.
+* python main.py evaluate : evaluates the supported models using the test dataset defined in .env and prints various statistics.
 
 
 
